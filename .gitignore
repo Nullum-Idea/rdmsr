@@ -1,0 +1,17 @@
+..module-common.o.cmd
+.Module.symvers.cmd
+.kernel_rdmsr.ko.cmd
+.kernel_rdmsr.mod.cmd
+.kernel_rdmsr.mod.o.cmd
+.kernel_rdmsr.o.cmd
+.module-common.o
+.modules.order.cmd
+Module.symvers
+kernel_rdmsr.ko
+kernel_rdmsr.mod
+kernel_rdmsr.mod.c
+kernel_rdmsr.mod.o
+kernel_rdmsr.o
+modules.order
+user_rdmsr
+user_rdmsr.o

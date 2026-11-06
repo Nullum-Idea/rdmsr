@@ -2,6 +2,7 @@
 #include <linux/kernel.h>
 #include <linux/module.h>
 
+
 #include "rdmsr.h"
 
 MODULE_LICENSE("GPL");
@@ -12,6 +13,13 @@ MODULE_LICENSE("GPL");
 */
 static int __init rdmsr_init(void) {
 	printk(KERN_INFO "Hello, kernel space!\n");
+
+	static const uint64_t msr[] = {MSR_MICROCODE_VERSION, MSR_SYSCALLTABLE_COMPAT, MSR_TIMESTAMP_COUNTER};
+	for (int i = 0; i < ARRAY_SIZE(msr); i++){
+  	uint64_t value = __assembly_rdmsr(msr[i]);
+  	printk(KERN_INFO "value at %llu = %llu\n", msr[i], value);
+	}
+
 	return 0;
 }
 
@@ -24,4 +32,3 @@ static void __exit rdmsr_exit(void) {
 
 module_init(rdmsr_init);
 module_exit(rdmsr_exit);
-
